@@ -20,31 +20,34 @@ from datetime import datetime
 
 
 class BotInfo:
-    def __init__(self, data: dict, bot=None):
-        self.__bot = bot
+    def __init__(self, data: dict):
         self.__raw = data
 
         # Bot User related
-        self.user = 0  # int (converted to discord.User if possible)
         self.id = 0  # int
         self.name = ""  # str
         self.avatar = ""  # str
         self.count = 0  # int
 
         # BFD related
-        self.approval = False  # bool
-        self.invite = ""  # str
-        self.longDesc = ""  # str
-        self.shortDesc = ""  # str
-        self.timestamp = 0  # int (converted to datetime)
-        self.prefix = ""  # str
+        self.approved = False  # bool
         self.verified = False  # bool
+
+        self.invite = ""  # str
+        self.shortDesc = ""  # str
+        self.prefix = ""  # str
+        self.website = ""  # str
+
+        self.longDesc = ""  # str
         self.type = ""  # str
         self.theme = ""  # str
 
+        self.timestamp = 0  # int (converted to datetime)x
+
         # BFD owner related
-        self.owner = 0  # int (converted to discord.User if possible)
+        self.owner = 0  # int
         self.ownername = ""  # str
+        self.ownernametwo = ""  # str
 
         # Apply result data
         self.__dict__.update(data)
@@ -54,8 +57,8 @@ class BotInfo:
 
     def as_dict(self) -> dict:
         data = self.__dict__.copy()
-        for key, value in data.items():
-            if key.startswith("__") or key is "as_dict":
+        for key, value in data.copy().items():
+            if key.startswith("_{}__".format(self.__class__.__name__)) or key is "as_dict":
                 del data[key]
 
         return data
@@ -68,14 +71,6 @@ class BotInfo:
             # Convert timestamp to
             self.timestamp_original = int(self.timestamp)
             self.timestamp = datetime.fromtimestamp(float(self.timestamp_original) / 1000.)
-
-            # Don't try discord.py conversions if bot doesn't exist
-            if self.__bot is None:
-                return
-
-            # Convert to discord.User
-            self.owner = self.__bot.get_user(int(self.owner)) or self.owner
-            self.user = self.__bot.get_user(int(self.id)) or self.id
 
     def __repr__(self):
         return "<BotInfo: {}>".format(self.id)

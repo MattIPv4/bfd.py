@@ -136,7 +136,7 @@ class Client:
         bots: list(BotInfo)
             A list of information about the bots on bfd
         """
-        bots = [BotInfo(raw_info, self.bot) for raw_info in await self.http.get("bots") if raw_info is not None]
+        bots = [BotInfo(raw_info) for raw_info in await self.http.get("bots") if raw_info is not None]
         if owner_id is not None:
             bots = list(filter(lambda b: int(b.owner) == owner_id, bots))
 
@@ -159,7 +159,7 @@ class Client:
             Information about the bot
         """
         bot = await self.http.get("bots/{}".format(bot_id))
-        return None if bot is None else BotInfo(bot, self.bot)
+        return None if bot is None else BotInfo(bot)
 
     async def get_embed_url(self, bot_id: int) -> str:
         """
