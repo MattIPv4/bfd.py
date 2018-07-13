@@ -16,7 +16,8 @@
  *   <https://github.com/MattIPv4/bfd.py/blob/master/LICENSE> or <http://www.gnu.org/licenses/>.
 """
 
-from setuptools import setup, find_packages
+from setuptools import setup
+import re
 
 with open("requirements.txt", "r") as f:
     requirements = f.readlines()
@@ -24,11 +25,18 @@ with open("requirements.txt", "r") as f:
 with open("README.md", "r") as f:
     readme = f.read()
 
+with open("bfd/__init__.py", "r") as f:
+    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
+
+if not version:
+    raise RuntimeError('version is not set')
+
 setup(
     name="bfd.py",
     author="MattIPv4",
-    version="1.0.0",
-    packages=find_packages(),
+    url="https://github.com/MattIPv4/bfd.py/",
+    version=version,
+    packages=['bfd'],
     python_requires=">= 3.5",
     include_package_data=True,
     install_requires=requirements,
@@ -37,8 +45,18 @@ setup(
     long_description_content_type="text/markdown",
     keywords="api wrapper discord bot bots stats statistics",
     classifiers=(
-        "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU Affero General Public License v3",
+        "Programming Language :: Python :: 3",
+        "Natural Language :: English",
+        "Intended Audience :: Developers",
         "Operating System :: OS Independent",
     ),
+    project_urls={
+        'Funding': 'http://patreon.mattcowley.co.uk/',
+        'Support': 'http://discord.mattcowley.co.uk/',
+        'Source': 'https://github.com/MattIPv4/bfd.py/',
+    },
 )
+
+# python3 setup.py sdist bdist_wheel bdist_egg
+# python3 -m twine upload dist/*

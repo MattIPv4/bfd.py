@@ -1,3 +1,5 @@
+[![PyPI](https://img.shields.io/pypi/v/bfd.py.svg)](https://pypi.org/project/bfd.py/)
+
 # bfd.py
 **A simple API wrapper for botsfordiscord.com written in Python.**
 
@@ -31,10 +33,10 @@ Install via pip (recommended)
             self.bot = bot
             self.token = 'token'  # set this to your BFD token
             self.bfd = bfd.Client(self.bot, self.token)  # Create a Client instance
-            self.bfd.start_loop()  # Posts the server count every 3 minutes
+            self.bfd.start_loop()  # Posts the server count every 30 minutes
 
         @commands.command()
-        async def botinfo(self, ctx, bot: discord.User): # unfiltered botinfo, you should not use this, it's shit but it shows the behavior
+        async def botinfo(self, ctx, bot: discord.User): # unfiltered botinfo demo
             info = await self.bfd.get_bot(bot.id)
             if info is None:
                 await ctx.send("Can't find this bot on BFD")
