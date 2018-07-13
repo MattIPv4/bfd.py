@@ -22,6 +22,8 @@ __license__ = 'AGPL'
 __copyright__ = 'Copyright 2018, MattIPv4'
 __version__ = '1.0.0'
 
+name = "bfd"
+
 from collections import namedtuple
 
 from .client import Client

@@ -1,2 +1,6 @@
 .idea
 tests/config.*
+bfd.py.egg-info/
+bfd/__pycache__/
+build/
+dist/

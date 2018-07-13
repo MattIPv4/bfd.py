@@ -18,10 +18,10 @@
 
 from setuptools import setup, find_packages
 
-with open('requirements.txt') as f:
+with open("requirements.txt", "r") as f:
     requirements = f.readlines()
 
-with open("README.md") as f:
+with open("README.md", "r") as f:
     readme = f.read()
 
 setup(
