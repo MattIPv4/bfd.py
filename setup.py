@@ -40,7 +40,7 @@ setup(
     python_requires=">= 3.5",
     include_package_data=True,
     install_requires=requirements,
-    description='A simple API wrapper for botsfordiscord.com written in Python',
+    description='A simple API wrapper for botsfordiscord.com written in Python.',
     long_description=readme,
     long_description_content_type="text/markdown",
     keywords="api wrapper discord bot bots stats statistics",
