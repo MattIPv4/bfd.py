@@ -5,11 +5,12 @@
 
 Install via pip (recommended)
 
-    pip install bfdpy
+    pip install bfd.py
 
 ## Features
 
 * POST server count
+* AUTOMATIC server count updating
 * GET bot info
 * GET global bot list
 * GET bot list for a specific user
@@ -36,12 +37,12 @@ Install via pip (recommended)
         async def botinfo(self, ctx, bot: discord.User): # unfiltered botinfo, you should not use this, it's shit but it shows the behavior
             info = await self.bfd.get_bot(bot.id)
             if info is None:
-                await ctx.send("Can't find this bot on bfd")
+                await ctx.send("Can't find this bot on BFD")
                 return
 
             embed = discord.Embed(title="BotInfo")
-            for key, value in info.__dict__.items():
-                if key == "" or value == "" or key == "raw":
+            for key, value in info.as_dict().items():
+                if key == "" or value == "":
                     continue
 
                 embed.add_field(name=key, value=str(value))
