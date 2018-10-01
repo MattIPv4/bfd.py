@@ -20,7 +20,7 @@ __title__ = 'bfd.py'
 __author__ = 'MattIPv4'
 __license__ = 'AGPL'
 __copyright__ = 'Copyright 2018, MattIPv4'
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 
 name = "bfd"
 
@@ -32,4 +32,8 @@ from .exceptions import *
 
 VersionInfo = namedtuple('VersionInfo', 'major minor micro releaselevel serial')
 
-version_info = VersionInfo(major=1, minor=0, micro=1, releaselevel='final', serial=0)
+version_info = VersionInfo(major=1, minor=0, micro=2, releaselevel='final', serial=0)
+
+import warnings
+
+warnings.warn("metalist.py has been deprecated, please consider using discordlists.py instead", DeprecationWarning)

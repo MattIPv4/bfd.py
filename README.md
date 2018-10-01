@@ -1,5 +1,8 @@
 [![PyPI](https://img.shields.io/pypi/v/bfd.py.svg)](https://pypi.org/project/bfd.py/)
 
+# Warning: bfd.py has been deprecated
+ Please consider using [discordlists.py](https://github.com/MattIPv4/discordlists.py/) instead which is also available on [PyPi](https://pypi.org/project/discordlists.py/).
+
 # bfd.py
 **A simple API wrapper for botsfordiscord.com written in Python.**
 
