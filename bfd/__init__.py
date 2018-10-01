@@ -36,4 +36,4 @@ version_info = VersionInfo(major=1, minor=0, micro=2, releaselevel='final', seri
 
 import warnings
 
-warnings.warn("metalist.py has been deprecated, please consider using discordlists.py instead", DeprecationWarning)
+warnings.warn("bfd.py has been deprecated, please consider using discordlists.py instead", DeprecationWarning)
